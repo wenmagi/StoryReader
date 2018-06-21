@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_movie"
+        android:icon="@drawable/ic_favorites"
+        android:title="书架" />
+
+    <item
+        android:id="@+id/navigation_music"
+        android:icon="@drawable/ic_classify"
+        android:title="分类" />
+
+    <item
+        android:id="@+id/navigation_books"
+        android:icon="@drawable/ic_book"
+        android:title="排行榜" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="排行榜" />
+
+</menu>
