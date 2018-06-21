@@ -26,7 +26,7 @@ public class ImgLoad {
     private static final Context mContext = BookApp.mContext;
 
     private static final RequestOptions options = new RequestOptions()
-            .dontAnimate().fitCenter();
+            .dontAnimate();
 //            .placeholder(R.drawable.meinv);
 
 

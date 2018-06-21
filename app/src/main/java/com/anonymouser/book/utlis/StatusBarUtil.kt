@@ -87,10 +87,13 @@ class StatusBarUtil {
         }
 
 
-        fun translucentStatusBar(activity: Activity) {
+        fun translucentStatusBar(activity: Activity, isLowProfile: Boolean) {
             var window = activity.window
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            window.decorView.systemUiVisibility =
+                    if (isLowProfile) View.INVISIBLE
+                    else View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { // 5.x
                 // StatusBar 去除颜色
                 cleanStatusBarBackgroundColor(activity)
@@ -102,7 +105,7 @@ class StatusBarUtil {
             // 设置 FitsSystemWindow 为 False，不预留 StatusBar 位置
             val contentView: ViewGroup = activity.window.findViewById(Window.ID_ANDROID_CONTENT) as ViewGroup
             val contentChild = contentView.getChildAt(0)
-            contentChild.fitsSystemWindows = false
+            contentChild?.fitsSystemWindows = false
         }
 
 

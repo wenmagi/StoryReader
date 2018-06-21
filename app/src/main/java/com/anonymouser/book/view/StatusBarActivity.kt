@@ -1,5 +1,6 @@
 package com.anonymouser.book.view
 
+import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.anonymouser.book.utlis.StatusBarUtil
@@ -15,9 +16,9 @@ open class StatusBarActivity : AppCompatActivity() {
     private var mStatusBarDrawable: StatusBarUtil.StatusBarDrawable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        StatusBarUtil.translucentStatusBar(this)
+        StatusBarUtil.translucentStatusBar(this, true)
         super.onCreate(savedInstanceState)
-        invalidateStatusBar()
+//        invalidateStatusBar()
     }
 
 

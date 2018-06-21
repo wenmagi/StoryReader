@@ -21,5 +21,6 @@
     <color name="reader_background_white_color">#ffeae5e0</color>
     <color name="reader_background_white_green">#ffbed0bf</color>
     <color name="reader_background_yellow_color">#ff031923</color>
+    <color name="white">#ffffffff</color>
 
 </resources>

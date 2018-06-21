@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".view.HomeActivity">
+        <activity android:name=".view.HomeActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +35,8 @@
             android:name=".view.ReadZhuiShuActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
 
-        <activity android:name=".view.SearchActivity" />
+        <activity android:name=".view.SearchActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
 
         <activity android:name=".view.RankActivity" />
 
