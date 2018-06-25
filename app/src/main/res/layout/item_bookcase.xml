@@ -8,55 +8,57 @@
 
     <ImageView
         android:id="@+id/iv_cover"
-        android:layout_width="66dp"
-        android:layout_height="100dp"
+        android:layout_width="68dp"
+        android:layout_height="96dp"
         android:layout_margin="10dp"
         android:scaleType="fitXY"/>
 
-    <com.anonymouser.book.widget.LocaleTextView
-        android:id="@+id/tv_book_name"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/iv_cover"
+        android:layout_alignBottom="@id/iv_cover"
+        android:layout_alignTop="@id/iv_cover"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/iv_cover"
         android:layout_toLeftOf="@+id/iv_touch"
         android:layout_toRightOf="@+id/iv_cover"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:text="hahahhahaha"
-        android:textColor="#000000"
-        android:textSize="16sp"/>
+        android:layout_toStartOf="@+id/iv_touch"
+        android:paddingBottom="8dp"
+        android:paddingTop="4dp">
 
-    <com.anonymouser.book.widget.LocaleTextView
-        android:id="@+id/tv_chapter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_book_name"
-        android:layout_marginTop="2dp"
-        android:layout_toLeftOf="@+id/iv_touch"
-        android:layout_toRightOf="@+id/iv_cover"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:text="testestststststststststststst"
-        android:textSize="12sp"/>
+        <com.anonymouser.book.widget.LocaleTextView
+            android:id="@+id/tv_book_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="testestststststststststststst"
+            android:textColor="#000000"
+            android:textSize="17sp"/>
 
-    <com.anonymouser.book.widget.LocaleTextView
-        android:id="@+id/tv_last_chapter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_chapter"
-        android:layout_marginTop="2dp"
-        android:layout_toLeftOf="@+id/iv_touch"
-        android:layout_toRightOf="@+id/iv_cover"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:text=""
-        android:textSize="12sp"/>
+        <com.anonymouser.book.widget.LocaleTextView
+            android:id="@+id/tv_last_chapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="testestststststststststststst"
+            android:textSize="12sp"/>
 
-    <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:background="#E7E7E8"/>-->
+        <com.anonymouser.book.widget.LocaleTextView
+            android:id="@+id/tv_chapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="testestststststststststststst"
+            android:textSize="13sp"/>
+
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/iv_touch"
@@ -64,5 +66,6 @@
         android:layout_height="35dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_action_module_black"/>
+        android:src="@drawable/ic_action_module_black"
+        android:visibility="gone"/>
 </RelativeLayout>

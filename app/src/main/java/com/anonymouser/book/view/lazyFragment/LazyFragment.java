@@ -31,7 +31,7 @@ public class LazyFragment extends BaseFragment {
     private boolean isInit = false;//真正要显示的View是否已经被初始化（正常加载）
     private Bundle savedInstanceState;
     public static final String INTENT_BOOLEAN_LAZYLOAD = "intent_boolean_lazyLoad";
-    private boolean isLazyLoad = true;
+    private boolean isLazyLoad = false;
     private FrameLayout layout;
     private boolean isStart = false;//是否处于可见状态，in the screen
 
@@ -40,9 +40,9 @@ public class LazyFragment extends BaseFragment {
         Log.d("TAG", "onCreateView() : " + "getUserVisibleHint():" + getUserVisibleHint());
         super.onCreateView(savedInstanceState);
         Bundle bundle = getArguments();
-        if (bundle != null) {
-            isLazyLoad = bundle.getBoolean(INTENT_BOOLEAN_LAZYLOAD, isLazyLoad);
-        }
+//        if (bundle != null) {
+//            isLazyLoad = bundle.getBoolean(INTENT_BOOLEAN_LAZYLOAD, isLazyLoad);
+//        }
         //判断是否懒加载
         if (isLazyLoad) {
             //一旦isVisibleToUser==true即可对真正需要的显示内容进行加载
@@ -60,7 +60,9 @@ public class LazyFragment extends BaseFragment {
             }
         } else {
             //不需要懒加载，开门江山，调用onCreateViewLazy正常加载显示内容即可
-            onCreateViewLazy(savedInstanceState);
+            if (!isInit) {
+                onCreateViewLazy(savedInstanceState);
+            }
             isInit = true;
         }
     }

@@ -48,7 +48,8 @@ public class HotListFragment extends LazyFragment {
 
 //    @Nullable
 //    @Override
-//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle
+// savedInstanceState) {
 //        View rootView = inflater.inflate(R.layout.fragment_hot_list,null);
 //        ButterKnife.bind(this, rootView);
 //        getData();

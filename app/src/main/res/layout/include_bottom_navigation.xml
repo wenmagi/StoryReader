@@ -4,7 +4,9 @@
                 android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/grey_5">
+                android:background="@color/grey_5"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager_th"
@@ -22,9 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/pink_800"
-        app:itemIconTint="@drawable/color_state_white_2"
-        app:itemTextColor="@drawable/color_state_white_2"
+        android:background="@android:color/white"
         app:menu="@menu/menu_bottom_navigation_shifting"/>
 
 </RelativeLayout>

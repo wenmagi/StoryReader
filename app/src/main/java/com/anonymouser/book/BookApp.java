@@ -64,7 +64,7 @@ public class BookApp extends MultiDexApplication {
         Locale locale;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             locale = LocaleList.getDefault().get(0);
-        } else locale = Locale.getDefault();
+        } else {locale = Locale.getDefault();}
 
         String region = locale.getCountry();
         if (region.contains("TW") || region.contains("HK")) {
@@ -89,7 +89,8 @@ public class BookApp extends MultiDexApplication {
             OkGo.getInstance().init(this)                       //必须调用初始化
                     .setCacheMode(CacheMode.REQUEST_FAILED_READ_CACHE)               //全局统一缓存模式，默认不使用缓存，可以不传
                     .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)   //全局统一缓存时间，默认永不过期，可以不传
-                    .setRetryCount(3);                               //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
+                    .setRetryCount(3);                               //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)
+                    // ，不需要可以设置为0
 
         } catch (Exception e) {
             e.printStackTrace();

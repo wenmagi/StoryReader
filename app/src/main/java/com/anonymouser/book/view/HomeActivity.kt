@@ -3,6 +3,7 @@ package com.anonymouser.book.view
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -12,9 +13,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
+import android.view.*
 import android.widget.Toast
 import com.anonymouser.book.R
 import com.anonymouser.book.bean.DownloadBookEvent
@@ -24,6 +23,7 @@ import com.anonymouser.book.event.SaveIsShowAdInfo
 import com.anonymouser.book.presenter.HomePresenter
 import com.anonymouser.book.service.DownloadService
 import com.anonymouser.book.utlis.AppUpdate
+import com.anonymouser.book.widget.Display
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import kotlinx.android.synthetic.main.activity_home.*
@@ -46,7 +46,8 @@ class HomeActivity : StatusBarActivity(), NavigationView.OnNavigationItemSelecte
     override fun onPageSelected(position: Int) {
         navigation.menu.getItem(position).isChecked = true
         invalidateStatusBar()
-        navigation?.setBackgroundColor(tabColor(position))
+        navigation?.itemTextColor = createColorList(viewPager_th.currentItem)
+        navigation?.itemIconTintList = createColorList(viewPager_th.currentItem)
     }
 
     private fun tabColor(position: Int): Int {
@@ -55,13 +56,13 @@ class HomeActivity : StatusBarActivity(), NavigationView.OnNavigationItemSelecte
                 return resources.getColor(R.color.pink_800)
             }
             1 -> {
-                return resources.getColor(R.color.blue_grey_700)
+                return resources.getColor(R.color.amber_700)
             }
             2 -> {
-                return resources.getColor(R.color.teal_800)
+                return resources.getColor(R.color.blue_800)
             }
             3 -> {
-                return resources.getColor(R.color.grey_700)
+                return resources.getColor(R.color.teal_800)
             }
         }
         return return resources.getColor(R.color.pink_800)
@@ -110,16 +111,21 @@ class HomeActivity : StatusBarActivity(), NavigationView.OnNavigationItemSelecte
         creator.add("设置", HotListFragment::class.java)
         val adapter = FragmentPagerItemAdapter(
                 supportFragmentManager, creator.create())
+        var params: ViewGroup.LayoutParams = viewPager_th.layoutParams
+//        params.setMargins(0, Display.getActionBarHeightPixels(this) + Display.dpToPixel(this, 10F), 0, 0);
+        viewPager_th.offscreenPageLimit = 4
         viewPager_th.adapter = adapter as PagerAdapter?
         viewPager_th.setOnPageChangeListener(this)
-
+        navigation?.itemTextColor = createColorList(0)
+        navigation?.itemIconTintList = createColorList(0)
         navigation.setOnNavigationItemSelectedListener { item ->
 
-            navigation?.setBackgroundColor(tabColor(viewPager_th.currentItem))
+            navigation?.itemTextColor = createColorList(viewPager_th.currentItem)
+            navigation?.itemIconTintList = createColorList(viewPager_th.currentItem)
+//            navigation?.setBackgroundColor(tabColor(viewPager_th.currentItem))
+
             when (item.itemId) {
                 R.id.navigation_movie -> {
-
-
                     if (viewPager_th.currentItem != 0) {
                         viewPager_th.currentItem = 0
                     }
@@ -147,6 +153,15 @@ class HomeActivity : StatusBarActivity(), NavigationView.OnNavigationItemSelecte
                 else -> false
             }
         }
+    }
+
+    private fun createColorList(position: Int): ColorStateList {
+        val colors = intArrayOf(resources.getColor(R.color.grey_400), tabColor(position))
+        val states = arrayOfNulls<IntArray>(2)
+        states[0] = intArrayOf(-android.R.attr.state_checked)
+        states[1] = intArrayOf(android.R.attr.state_checked)
+        return ColorStateList(states, colors)
+
     }
 
     override fun onResume() {

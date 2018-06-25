@@ -122,7 +122,8 @@ public class BookCaseAdapter extends SwipeMenuAdapter<BookCaseAdapter.DefaultVie
             BookCaseBean bean = mBeans.get(position);
             ImgLoad.baseLoadImg(bean.getImg(), ivCover);
             tvBookName.setText(bean.getBookName());
-            tvChapter.setText(bean.getReadChapterTitle());
+            String title = bean.getReadChapterTitle();
+            tvChapter.setText(title.isEmpty()?"":"阅读进度：" + bean.getReadChapterTitle());
             rootView.setTag(bean);
 
             tvLastChapter.setText("");

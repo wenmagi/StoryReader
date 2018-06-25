@@ -5,7 +5,7 @@ import android.util.DisplayMetrics
 import android.view.WindowManager
 import com.anonymouser.book.BookApp
 import android.opengl.ETC1.getHeight
-
+import android.util.TypedValue
 
 
 /**
@@ -47,4 +47,22 @@ object Display {
         }
     }
 
+    fun getActionBarHeightPixels(pContext: Context?): Int {
+        val typedValue = TypedValue()
+
+        return if (pContext != null && pContext.theme.resolveAttribute(android.R.attr.actionBarSize, typedValue, true)) {
+            TypedValue.complexToDimensionPixelSize(typedValue.data, pContext.resources.displayMetrics)
+        } else 0
+
+    }
+
+    fun dpToPixel(pContext: Context?, pDp: Float): Int {
+        if (pContext == null) {
+            return 0
+        }
+
+        val density = pContext.resources.displayMetrics.density
+
+        return (pDp * density + 0.5f).toInt()
+    }
 }
